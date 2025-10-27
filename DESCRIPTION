@@ -1,0 +1,30 @@
+Package: SpLin
+Title: An R Package for Morphometric Transformation and Visualization of Spatiotemporal Omics Data.
+Version: 1.0.6
+Date: 2024-03-02
+Author: Wen Luo
+Maintainer: Wen Luo <luokmhd@foxmail.com>
+Description: 
+  SpatioLinear (SpLin) is an R package designed to process spatiotemporal omics data, particularly from spatial transcriptomic chips. It accurately linearizes and horizontally maps the physical coordinates of specific curved-shaped, continuous local tissue structures (e.g., neural tubes, intestinal tissues) to the x-axis. By algorithmically transforming these complex tissue architectures into a standardized 1D coordinate system, SpatioLinear preserves topological integrity while enabling more intuitive display and analysis of the spatial distribution features of these tissue structures.
+Depends: R (>= 4.2.0)
+Imports: 
+  sp, sf, spdep, gstat, mgcv, Seurat, jsonlite, ggplot2, data.table, patchwork, reshape2, RColorBrewer, raster,
+  dplyr, WGCNA, concaveman, circlize, stringr, ggpubr, ggsignif, gghalves, rlang, ggsci, ggquiver, ggforce, pheatmap,
+  fuzzyjoin, DNAcopy, dbscan, nls2, ggdensity, akima
+Suggests: 
+  testthat (>= 3.0.0)
+SystemRequirements: 
+  Python (>=3.8), 
+  opencv-python (>=4.10.0.84), 
+  rasterio (>=1.3.11), 
+  numpy (>=1.23.5), 
+  matplotlib (>=3.7.1), 
+  pillow (>=10.4.0), 
+  joblib (>=1.4.2), 
+  scipy (>=1.10.1)
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/scholarLW/SpLin
+BugReports: https://github.com/scholarLW/SpLin/issues
+License: GPL-2
+NeedsCompilation: yes
