@@ -24,7 +24,7 @@ jsonFilter = function(rds, json, nlim)
         {
           bnd = tmp[j:(j+2), ]
           inside <- in.out(bnd, as.matrix(metaDta))
-          if(sum(inside)<=nlim)
+          if(sum(inside)<nlim)
           {
             tmp = tmp[-(j+1), ]
             max_length = nrow(tmp)
