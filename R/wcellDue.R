@@ -73,7 +73,10 @@ wcellDue = function(rds, Assay = 'Spatial', method = NULL, windowSV = 250, windo
     metadata$window = metadata$windowVertical
   }
   obj@meta.data = metadata[rownames(obj@meta.data), ]
-  count_matrix <- GetAssayData(obj, assay = Assay, slot = "counts")
+  count_matrix <- tryCatch(
+    GetAssayData(obj, assay = Assay, layer = "counts"),
+    error = function(e) GetAssayData(obj, assay = Assay, slot = "counts")
+  )
   # Mean
   #data = apply(count_matrix, 1, mean_f, colnames(count_matrix), metadata)
   # GFai
