@@ -90,7 +90,10 @@ wcellDueGrid = function(rds, Assay = 'Spatial', grid_density = 30)
   
   obj = subset(obj, cells = rownames(metadata))
   obj@meta.data = metadata[rownames(obj@meta.data), ]
-  count_matrix <- GetAssayData(obj, assay = Assay, slot = "counts")
+  count_matrix <- tryCatch(
+    GetAssayData(obj, assay = Assay, layer = "counts"),
+    error = function(e) GetAssayData(obj, assay = Assay, slot = "counts")
+  )
   count_matrix = count_matrix[, rownames(metadata)]
   data = apply(count_matrix, 1, calculate_all_GFai_2, colnames(count_matrix), metadata, grid_density*grid_density, maxWindow = 100*100)	
   rownames(data) = paste("Window", sort(unique(metadata$window)), sep = "")
