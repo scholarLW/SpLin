@@ -344,7 +344,7 @@ IGSIGrid = function(rds, GMF, topFreq = 0.05, nbin = 10, topSegFreq = 0.4, TopCe
                   pull(cell)  
               }
               
-              clusterN_cells = intersect(clusterN_cells1, clusterN_cells2)					  
+              clusterN_cells = base::intersect(clusterN_cells1, clusterN_cells2)					  
               if(length(clusterN_cells)>0)
               {
                 points <- data %>%
