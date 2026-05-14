@@ -515,20 +515,20 @@ IGSI = function(rds, GMF, topFreq = 0.05, nbin = 10, alpha = 0.001, SD = 3, topS
                                              ifelse(pvalue < 0.01, "**", 
                                                     ifelse(pvalue < 0.05, "*", "ns")))
                       
-                      p <- ggplot(data = data, aes(x = MCS, y = Score, fill = MCS)) +
-                        geom_half_violin(color = NA, side = "r", trim = FALSE) +
-                        geom_boxplot(aes(color = MCS), fill = "white", outlier.shape = NA, alpha = 0.8, width = 0.15) +
-                        geom_half_point(side = "l", shape = 16, size = 0.5, color = 'grey50') +
-                        geom_text(aes(x = 1.5, y = max(data$Score) * 1.1, label = signif_label), 
-                                  size = 5, fontface = "bold", color = "black") +
-                        scale_fill_manual(values = c("YES" = "darkred", "NO" = "darkgreen"), guide = "legend", drop = FALSE) +
-                        scale_color_manual(values = c("YES" = "darkred", "NO" = "darkgreen"), guide = "legend", drop = FALSE) +
-                        labs(x = 'Group', y = 'Score Value') +
-                        theme_bw() +
-                        theme(panel.grid = element_blank()) +
-                        theme(axis.text.x = element_text(family = NULL, size = 8, angle = 45, hjust = 1, vjust = 1))
+                      #p <- ggplot(data = data, aes(x = MCS, y = Score, fill = MCS)) +
+                      #  geom_half_violin(color = NA, side = "r", trim = FALSE) +
+                      #  geom_boxplot(aes(color = MCS), fill = "white", outlier.shape = NA, alpha = 0.8, width = 0.15) +
+                      #  geom_half_point(side = "l", shape = 16, size = 0.5, color = 'grey50') +
+                      #  geom_text(aes(x = 1.5, y = max(data$Score) * 1.1, label = signif_label), 
+                      #            size = 5, fontface = "bold", color = "black") +
+                      #  scale_fill_manual(values = c("YES" = "darkred", "NO" = "darkgreen"), guide = "legend", drop = FALSE) +
+                      #  scale_color_manual(values = c("YES" = "darkred", "NO" = "darkgreen"), guide = "legend", drop = FALSE) +
+                      #  labs(x = 'Group', y = 'Score Value') +
+                      #  theme_bw() +
+                      #  theme(panel.grid = element_blank()) +
+                      #  theme(axis.text.x = element_text(family = NULL, size = 8, angle = 45, hjust = 1, vjust = 1))
                       
-                      ggsave(paste0(absolute_path, "/", i_current_column, '.MSC-boxPlotOneSidedTest.png'), p, width = 8, height = 6)
+                     # ggsave(paste0(absolute_path, "/", i_current_column, '.MSC-boxPlotOneSidedTest.png'), p, width = 8, height = 6)
                       
                       gnames = levels(data$MCSR)
                       gnum = nlevels(data$MCSR)
@@ -540,25 +540,25 @@ IGSI = function(rds, GMF, topFreq = 0.05, nbin = 10, alpha = 0.001, SD = 3, topS
                       }
                       
                       
-                      p <- ggplot(data = data, aes(x = MCSR, y = Score, fill = MCSR)) +
-                        geom_half_violin(color = NA, side = "r", trim = FALSE) +
-                        geom_boxplot(aes(color = MCSR), fill = "white", outlier.shape = NA, alpha = 0.8, width = 0.15) +
-                        geom_half_point(side = "l", shape = 16, size = 0.5, color = 'grey50') +
-                        geom_signif(comparisons=comparisonslist,
-                                    margin_top = 0.1,
-                                    step_increase=0.08,
-                                    test="wilcox.test",
-                                    textsize=2.8,
-                                    map_signif_level = TRUE) +  
-                        scale_fill_manual(values=mycolor, guide="none") +
-                        scale_color_manual(values=mycolor, guide="none") +	
-                        scale_fill_manual(values = c("CFD" = "darkred", 'DAF' = "darkblue", "PBR" = "darkgreen"), guide = "legend", drop = FALSE) +
-                        scale_color_manual(values = c("CFD" = "darkred", 'DAF' = "darkblue","PBR" = "darkgreen"), guide = "legend", drop = FALSE) +										  
-                        labs(x = 'Group', y = 'Score Value') +
-                        theme_bw() +
-                        theme(panel.grid = element_blank()) +
-                        theme(axis.text.x = element_text(family = NULL, size = 8, angle = 45, hjust = 1, vjust = 1))  
-                      ggsave(paste0(absolute_path, "/", i_current_column, '.MSC-boxPlotTwoSidedTest.png'), p, width = 8, height = 6)
+                     # p <- ggplot(data = data, aes(x = MCSR, y = Score, fill = MCSR)) +
+                     #  geom_half_violin(color = NA, side = "r", trim = FALSE) +
+                      #  geom_boxplot(aes(color = MCSR), fill = "white", outlier.shape = NA, alpha = 0.8, width = 0.15) +
+                      #  geom_half_point(side = "l", shape = 16, size = 0.5, color = 'grey50') +
+                      #  geom_signif(comparisons=comparisonslist,
+                      #              margin_top = 0.1,
+                      #              step_increase=0.08,
+                      #              test="wilcox.test",
+                      #              textsize=2.8,
+                      #              map_signif_level = TRUE) +  
+                      #  scale_fill_manual(values=mycolor, guide="none") +
+                      #  scale_color_manual(values=mycolor, guide="none") +	
+                      #  scale_fill_manual(values = c("CFD" = "darkred", 'DAF' = "darkblue", "PBR" = "darkgreen"), guide = "legend", drop = FALSE) +
+                      #  scale_color_manual(values = c("CFD" = "darkred", 'DAF' = "darkblue","PBR" = "darkgreen"), guide = "legend", drop = FALSE) +										  
+                      #  labs(x = 'Group', y = 'Score Value') +
+                      #  theme_bw() +
+                      #  theme(panel.grid = element_blank()) +
+                      #  theme(axis.text.x = element_text(family = NULL, size = 8, angle = 45, hjust = 1, vjust = 1))  
+                      #ggsave(paste0(absolute_path, "/", i_current_column, '.MSC-boxPlotTwoSidedTest.png'), p, width = 8, height = 6)
                       
                       center_cells <- data %>%
                         filter(MCS == "YES") %>%
